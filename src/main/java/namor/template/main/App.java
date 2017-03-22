@@ -11,7 +11,7 @@ public class App {
         return minuend - subtrahend;
     }
 
-    public int multiplicate(int a, int b) {
-        return a*b;
+    public int multiplicate(int multiplicand, int multiplier) {
+        return multiplicand * multiplier;
     }
 }
