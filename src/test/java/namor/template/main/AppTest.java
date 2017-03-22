@@ -29,4 +29,12 @@ public class AppTest {
 
         assertThat(actual).isEqualTo(expexted);
     }
+
+    @Test
+    public void multiplicateTwoNumbers() {
+        final int expexted = 15;
+        final int actual = app.multiplicate( 3, 5);
+
+        assertThat(actual).isEqualTo(expexted);
+    }
 }
