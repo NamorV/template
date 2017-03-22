@@ -14,4 +14,8 @@ public class App {
     public int multiplicate(int multiplicand, int multiplier) {
         return multiplicand * multiplier;
     }
+
+    public int divide(int a, int b) {
+        return a / b;
+    }
 }

@@ -41,7 +41,7 @@ public class AppTest {
     @Test
     public void divideTwoNumbers() {
         final int expected = 7;
-        final int actual = app.devide( 21, 3);
+        final int actual = app.divide( 21, 3);
 
         assertThat(actual).isEqualTo(expected);
     }
