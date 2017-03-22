@@ -10,4 +10,8 @@ public class App {
     public int substract(int minuend, int subtrahend){
         return minuend - subtrahend;
     }
+
+    public int multiplicate(int a, int b) {
+        return a*b;
+    }
 }
