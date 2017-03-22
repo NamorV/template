@@ -24,17 +24,25 @@ public class AppTest {
 
     @Test
     public void subtractTwoNumbers() {
-        final int expexted = 2;
+        final int expected = 2;
         final int actual = app.substract( 7, 5);
 
-        assertThat(actual).isEqualTo(expexted);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
     public void multiplicateTwoNumbers() {
-        final int expexted = 15;
+        final int expected = 15;
         final int actual = app.multiplicate( 3, 5);
 
-        assertThat(actual).isEqualTo(expexted);
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    public void divideTwoNumbers() {
+        final int expected = 7;
+        final int actual = app.devide( 21, 3);
+
+        assertThat(actual).isEqualTo(expected);
     }
 }
