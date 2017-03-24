@@ -21,4 +21,28 @@ public class AppTest {
 
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    public void subtractTwoNumbers() {
+        final int expected = 2;
+        final int actual = app.substract( 7, 5);
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    public void multiplicateTwoNumbers() {
+        final int expected = 15;
+        final int actual = app.multiplicate( 3, 5);
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    public void divideTwoNumbers() {
+        final int expected = 7;
+        final int actual = app.divide( 21, 3);
+
+        assertThat(actual).isEqualTo(expected);
+    }
 }
