@@ -19,5 +19,9 @@ public class App {
         return top == -1;
     }
 
-
+    public void push(int number)
+    {
+        top = top+1;
+        stack[top] = number;
+    }
 }
