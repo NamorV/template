@@ -21,4 +21,14 @@ public class AppTest {
 
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    public void tryPush() {
+        final boolean expected = false;
+        app.push(4);
+        app.push(6);
+        final boolean actual = app.IsEmpty();
+
+        assertThat(actual).isEqualTo(expected);
+    }
 }
