@@ -60,7 +60,7 @@ public class AppTest {
     {
         final int expected = 4;
         app.push(4);
-        final int actual = app.peel();
+        final int actual = app.peak();
 
         assertThat(actual).isEqualTo(expected);
     }

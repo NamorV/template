@@ -33,4 +33,9 @@ public class App {
     {
         top--;
     }
+
+    public int peak()
+    {
+        return stack[top];
+    }
 }
