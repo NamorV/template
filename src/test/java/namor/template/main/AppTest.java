@@ -32,5 +32,12 @@ public class AppTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @Test
+    public void checkSizeMethod()
+    {
+        final int expected = 2;
+        final int actual = app.stackSize();
 
+        assertThat(actual).isEqualTo(expected);
+    }
 }
