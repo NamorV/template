@@ -28,4 +28,9 @@ public class App {
     {
         return top+1;
     }
+
+    public void pop()
+    {
+        top--;
+    }
 }
