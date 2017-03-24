@@ -23,4 +23,9 @@ public class App {
     {
         stack[++top] = number;
     }
+
+    public int stackSize()
+    {
+        return top+1;
+    }
 }

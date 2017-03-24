@@ -36,6 +36,8 @@ public class AppTest {
     public void checkSizeMethod()
     {
         final int expected = 2;
+        app.push(4);
+        app.push(6);
         final int actual = app.stackSize();
 
         assertThat(actual).isEqualTo(expected);
