@@ -11,13 +11,13 @@ public class AppTest {
 
     @Before
     public void setUp() throws Exception {
-        app = new App();
+        app = new App(10);
     }
 
     @Test
-    public void addTwoNumbers() {
-        final int expected = 4;
-        final int actual = app.add(2, 2);
+    public void checkIfEmpty() {
+        final boolean expected = true;
+        final boolean actual = app.IsEmpty();
 
         assertThat(actual).isEqualTo(expected);
     }
