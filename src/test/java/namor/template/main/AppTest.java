@@ -54,4 +54,14 @@ public class AppTest {
 
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    public void tryPeek()
+    {
+        final int expected = 4;
+        app.push(4);
+        final int actual = app.peel();
+
+        assertThat(actual).isEqualTo(expected);
+    }
 }
