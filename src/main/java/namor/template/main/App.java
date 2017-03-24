@@ -21,7 +21,6 @@ public class App {
 
     public void push(int number)
     {
-        top = top+1;
-        stack[top] = number;
+        stack[++top] = number;
     }
 }
