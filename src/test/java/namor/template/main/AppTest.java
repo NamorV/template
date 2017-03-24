@@ -42,4 +42,16 @@ public class AppTest {
 
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    public void checkPop()
+    {
+        final int expected = 1;
+        app.push(4);
+        app.push(6);
+        app.pop();
+        final int actual = app.stackSize();
+
+        assertThat(actual).isEqualTo(expected);
+    }
 }
