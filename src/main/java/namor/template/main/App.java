@@ -14,5 +14,8 @@ public class App {
         top = -1;
     }
 
-
+    public boolean IsEmpty()
+    {
+        return top == -1;
+    }
 }
