@@ -48,7 +48,11 @@ public class App {
 
     public int peak()
     {
-        return stack[top-1];
+        if (!IsEmpty())
+        {
+            return stack[top-1];
+        }
+        else return -1;
     }
 
 
