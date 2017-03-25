@@ -64,6 +64,13 @@ public class AppTest {
     public void checkIfStackIsResizable()
     {
         final int expected = 11;
+        for (int i = 1; i < 12; i++)
+        {
+            app.push(11);
+        }
 
+
+        final int actual = app.stack[10];
+        assertThat(actual).isEqualTo(expected);
     }
 }

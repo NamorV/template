@@ -1,5 +1,7 @@
 package namor.template.main;
 
+import java.util.Arrays;
+
 // TODO: 20.03.17 [GUSb] A test class to check everything works, should be deleted with first finished task
 public class App {
 
@@ -44,4 +46,5 @@ public class App {
     {
         return stack[top-1];
     }
+
 }
