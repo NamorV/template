@@ -59,4 +59,11 @@ public class AppTest {
 
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    public void checkIfStackIsResizable()
+    {
+        final int expected = 11;
+
+    }
 }

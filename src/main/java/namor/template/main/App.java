@@ -42,6 +42,6 @@ public class App {
 
     public int peak()
     {
-        return stack[top];
+        return stack[top-1];
     }
 }
