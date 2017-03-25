@@ -23,6 +23,10 @@ public class App {
 
     public void push(int value)
     {
+        if (top == stack.length)
+        {
+            extendStack();
+        }
         stack[top] = value;
         top++;
     }
@@ -45,6 +49,12 @@ public class App {
     public int peak()
     {
         return stack[top-1];
+    }
+
+
+    private void extendStack()
+    {
+        stack = Arrays.copyOf(stack, stack.length+1);
     }
 
 }
