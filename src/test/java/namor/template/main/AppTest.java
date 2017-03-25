@@ -16,20 +16,17 @@ public class AppTest {
 
     @Test
     public void checkIfEmpty() {
-        final boolean expected = true;
         final boolean actual = app.IsEmpty();
 
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actual).isTrue();
     }
 
     @Test
-    public void tryPush() {
-        final boolean expected = false;
+    public void checkIfPushedValueInStack() {
+        final int expected = 4;
         app.push(4);
-        app.push(6);
-        final boolean actual = app.IsEmpty();
 
-        assertThat(actual).isEqualTo(expected);
+        assertThat(app.stack[0]).isEqualTo(expected);
     }
 
     @Test
@@ -44,15 +41,13 @@ public class AppTest {
     }
 
     @Test
-    public void checkPop()
+    public void checkThePopMethod()
     {
-        final int expected = 1;
         app.push(4);
         app.push(6);
         app.pop();
-        final int actual = app.stackSize();
 
-        assertThat(actual).isEqualTo(expected);
+        assertThat(app.stack[1]).isEqualTo(0);
     }
 
     @Test

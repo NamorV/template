@@ -11,27 +11,33 @@ public class App {
     {
         size = arraySize;
         stack = new int[size];
-        top = -1;
+        top = 0;
     }
 
     public boolean IsEmpty()
     {
-        return top == -1;
+        return top == 0;
     }
 
     public void push(int value)
     {
-        stack[++top] = value;
+        stack[top] = value;
+        top++;
     }
 
     public int stackSize()
     {
-        return top+1;
+        return top;
     }
 
     public void pop()
     {
-        top--;
+        if(!IsEmpty())
+        {
+            stack[top-1] = 0;
+            top--;
+        }
+
     }
 
     public int peak()
