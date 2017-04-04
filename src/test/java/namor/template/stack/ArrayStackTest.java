@@ -7,7 +7,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ArrayStackTest {
 
     private ArrayStack arrayStack;
-    private final IllegalAccessError exception = new IllegalAccessError();
 
     @Before
     public void setUp() throws Exception {
@@ -15,34 +14,34 @@ public class ArrayStackTest {
     }
 
     @Test
-    public void ShouldReturnTrueWhenStackIsEmpty() {
+    public void shouldReturnTrueWhenStackIsEmpty() {
         final boolean actual = arrayStack.isEmpty();
 
         assertThat(actual).isTrue();
     }
 
     @Test
-    public void WhenPushValueIntoStackExpectStackIsEmptyFalse() {
+    public void whenPushValueIntoStackExpectStackIsEmptyFalse() {
         arrayStack.push(4);
 
         assertThat(arrayStack.isEmpty()).isFalse();
     }
 
     @Test
-    public void WhenPushValueIntoStackExpectStackSizeIncrements() {
+    public void whenPushValueIntoStackExpectStackSizeIncrements() {
         final int expected = 3;
         final int actual;
 
         arrayStack.push(1);
         arrayStack.push(2);
         arrayStack.push(3);
-        actual = arrayStack.stackSize();
+        actual = arrayStack.size();
 
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
-    public void PushedValueIsInTheStack()
+    public void pushedValueIsInTheStack()
     {
         final int expected = 4;
         final int actual;
@@ -52,13 +51,13 @@ public class ArrayStackTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-    @Test (expected=RuntimeException.class)
-    public void ShouldThrowExceptionWhenPeakValueFromEmptyStack() {
+    @Test (expected=MyOwnException.class)
+    public void shouldThrowExceptionWhenPeakValueFromEmptyStack() {
         arrayStack.peak();
     }
 
     @Test
-    public void ShouldReturnValueWhenPopFromStack()
+    public void shouldReturnValueWhenPopFromStack()
     {
         final int expected = 3;
         final int actual;
@@ -72,7 +71,7 @@ public class ArrayStackTest {
     }
 
     @Test
-    public void WhenPopValueExpectStackSizeDecreased()
+    public void whenPopValueExpectStackSizeDecreased()
     {
         final int expected = 2;
         final int actual;
@@ -81,18 +80,18 @@ public class ArrayStackTest {
         arrayStack.push(2);
         arrayStack.push(3);
         arrayStack.pop();
-        actual =  arrayStack.stackSize();
+        actual =  arrayStack.size();
 
         assertThat(actual).isEqualTo(expected);
     }
 
-    @Test (expected=RuntimeException.class)
-    public void ShouldThrowExceptionWhenPopFromEmptyStack() throws RuntimeException {
+    @Test (expected=MyOwnException.class)
+    public void shouldThrowExceptionWhenPopFromEmptyStack() {
         arrayStack.pop();
     }
 
     @Test
-    public void ResizeStackWhenLastCellOfArrayIsFilled() {
+    public void resizeStackWhenLastCellOfArrayIsFilled() {
         final int firstSize = 2;
         final int actual;
         ArrayStack myStack = new ArrayStack(firstSize);
@@ -100,7 +99,7 @@ public class ArrayStackTest {
         myStack.push(1);
         myStack.push(2);
         myStack.push(3);
-        actual = myStack.stackSize();
+        actual = myStack.size();
         assertThat(actual).isGreaterThan(firstSize);
     }
 

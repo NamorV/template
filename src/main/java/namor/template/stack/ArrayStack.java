@@ -7,7 +7,7 @@ public class ArrayStack {
     private int top;
     private int size;
     private int[] stack;
-    private static final int SIZE = 10;
+    private static final int DEFAULT_SIZE = 10;
 
     public ArrayStack(int size) {
         if (size < 1) {
@@ -19,7 +19,7 @@ public class ArrayStack {
     }
 
     public ArrayStack() {
-        this.size = SIZE;
+        this.size = DEFAULT_SIZE;
         stack = new int[size];
     }
 
@@ -29,26 +29,26 @@ public class ArrayStack {
 
     public void push(int value) {
         if (top == stack.length) {
-            extendStack();
+            increaseStackCapacity();
         }
 
         stack[top] = value;
         top++;
     }
 
-    public int stackSize() {
+    public int size() {
         return top;
     }
 
     public int peak () {
-        illegalAction("Can't peak value, stack is empty!");
+        checkIfMethodCanBeExecuted();
 
         return stack[top - 1];
     }
 
 
     public int pop() {
-        illegalAction("Can't peak value, stack is empty!");
+        checkIfMethodCanBeExecuted();
 
         int popValue = stack[top - 1];
 
@@ -59,13 +59,13 @@ public class ArrayStack {
     }
 
 
-    private void extendStack() {
+    private void increaseStackCapacity() {
         stack = Arrays.copyOf(stack, 2*stack.length);
     }
 
-    private void illegalAction(String msg) {
+    private void checkIfMethodCanBeExecuted() {
         if (isEmpty()) {
-            throw new RuntimeException(msg);
+            throw new MyOwnException("Can't perform action, stack is full!");
         }
     }
 
