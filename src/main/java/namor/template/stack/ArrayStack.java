@@ -41,14 +41,13 @@ public class ArrayStack {
     }
 
     public int peak () {
-        checkIfMethodCanBeExecuted();
+        checkExecutability();
 
         return stack[top - 1];
     }
 
-
     public int pop() {
-        checkIfMethodCanBeExecuted();
+        checkExecutability();
 
         int popValue = stack[top - 1];
 
@@ -58,14 +57,13 @@ public class ArrayStack {
         return popValue;
     }
 
-
     private void increaseStackCapacity() {
         stack = Arrays.copyOf(stack, 2*stack.length);
     }
 
-    private void checkIfMethodCanBeExecuted() {
+    private void checkExecutability() {
         if (isEmpty()) {
-            throw new MyOwnException("Can't perform action, stack is full!");
+            throw new IllegalExecution("Can't perform action, stack is full!");
         }
     }
 
