@@ -51,7 +51,7 @@ public class ArrayStackTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-    @Test (expected=IllegalExecution.class)
+    @Test (expected=EmptyStackException.class)
     public void shouldThrowExceptionWhenPeakValueFromEmptyStack() {
         arrayStack.peak();
     }
@@ -85,7 +85,7 @@ public class ArrayStackTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-    @Test (expected=IllegalExecution.class)
+    @Test (expected=EmptyStackException.class)
     public void shouldThrowExceptionWhenPopFromEmptyStack() {
         arrayStack.pop();
     }

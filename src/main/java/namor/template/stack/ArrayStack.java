@@ -6,7 +6,7 @@ public class ArrayStack {
 
     private int top;
     private int size;
-    private int[] stack;
+    private int[] storage;
     private static final int DEFAULT_SIZE = 10;
 
     public ArrayStack(int size) {
@@ -15,12 +15,12 @@ public class ArrayStack {
         }
 
         this.size = size;
-        stack = new int[size];
+        storage = new int[size];
     }
 
     public ArrayStack() {
         this.size = DEFAULT_SIZE;
-        stack = new int[size];
+        storage = new int[size];
     }
 
     public boolean isEmpty() {
@@ -28,11 +28,11 @@ public class ArrayStack {
     }
 
     public void push(int value) {
-        if (top == stack.length) {
+        if (top == storage.length) {
             increaseStackCapacity();
         }
 
-        stack[top] = value;
+        storage[top] = value;
         top++;
     }
 
@@ -41,29 +41,29 @@ public class ArrayStack {
     }
 
     public int peak () {
-        checkExecutability();
+        validateNotEmpty();
 
-        return stack[top - 1];
+        return storage[top - 1];
     }
 
     public int pop() {
-        checkExecutability();
+        validateNotEmpty();
 
-        int popValue = stack[top - 1];
+        int popValue = storage[top - 1];
 
-        stack[top - 1] = 0;
+        storage[top - 1] = 0;
         top--;
 
         return popValue;
     }
 
     private void increaseStackCapacity() {
-        stack = Arrays.copyOf(stack, 2*stack.length);
+        storage = Arrays.copyOf(storage, 2*storage.length);
     }
 
-    private void checkExecutability() {
+    private void validateNotEmpty() {
         if (isEmpty()) {
-            throw new IllegalExecution("Can't perform action, stack is full!");
+            throw new EmptyStackException("Can't perform action, stack is empty!");
         }
     }
 
