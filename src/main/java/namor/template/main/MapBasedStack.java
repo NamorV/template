@@ -12,5 +12,9 @@ public class MapBasedStack {
         storage = new HashMap<Integer, Integer>();
     }
 
+    public boolean isEmpty() {
+        return top == 0;
+    }
+
 
 }
