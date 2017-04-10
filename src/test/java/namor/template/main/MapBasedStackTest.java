@@ -43,4 +43,16 @@ public class MapBasedStackTest {
 
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    public void whenPushValueStackSizeIncreased() {
+        final int expected = 2;
+        final int actual;
+
+        mapBasedStack.push(1);
+        mapBasedStack.push(2);
+        actual = mapBasedStack.size();
+
+        assertThat(actual).isEqualTo(expected);
+    }
 }
