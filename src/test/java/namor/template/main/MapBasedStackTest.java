@@ -14,7 +14,7 @@ public class MapBasedStackTest {
     }
 
     @Test
-    public void addTwoNumbers() {
+    public void whenStackIsEmptyExpectsTrue() {
         final boolean actual;
 
         actual = mapBasedStack.isEmpty();
