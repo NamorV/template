@@ -24,4 +24,8 @@ public class MapBasedStack {
     public int peak() {
         return storage.get(top-1);
     }
+
+    public int size() {
+        return top;
+    }
 }
