@@ -71,7 +71,20 @@ public class MapBasedStackTest {
         mapBasedStack.push(3);
         mapBasedStack.pop();
         actual = mapBasedStack.size();
-        
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    public void peakReturnsLastPushedElement() {
+        final int expected = 3;
+        final int actual;
+
+        mapBasedStack.push(1);
+        mapBasedStack.push(2);
+        mapBasedStack.push(3);
+        actual = mapBasedStack.pop();
+
         assertThat(actual).isEqualTo(expected);
     }
 }
