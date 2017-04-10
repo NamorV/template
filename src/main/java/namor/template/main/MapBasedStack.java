@@ -20,4 +20,8 @@ public class MapBasedStack {
         storage.put(top, value);
         top++;
     }
+
+    public int peak() {
+        return storage.get(top-1);
+    }
 }
