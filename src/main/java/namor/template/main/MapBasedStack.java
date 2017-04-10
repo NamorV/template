@@ -31,6 +31,17 @@ public class MapBasedStack {
         return top;
     }
 
+    public int pop() {
+        int value;
+
+        validateStackNotEmpty();
+        value = peak();
+        storage.remove(top-1);
+        top--;
+
+        return value;
+    }
+
     private void validateStackNotEmpty() {
         if(isEmpty()) {
             throw new EmptyStackException("Can't perform action, stack is empty!");
