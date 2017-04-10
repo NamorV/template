@@ -31,4 +31,16 @@ public class MapBasedStackTest {
 
         assertThat(actual).isFalse();
     }
+
+    @Test
+    public void peakReturnLastPushedValue() {
+        final int expected = 2;
+        final int actual;
+
+        mapBasedStack.push(1);
+        mapBasedStack.push(2);
+        actual = mapBasedStack.peak();
+
+        assertThat(actual).isEqualTo(expected);
+    }
 }
