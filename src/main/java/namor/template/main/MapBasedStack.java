@@ -22,10 +22,18 @@ public class MapBasedStack {
     }
 
     public int peak() {
+        validateStackNotEmpty();
+
         return storage.get(top-1);
     }
 
     public int size() {
         return top;
+    }
+
+    private void validateStackNotEmpty() {
+        if(isEmpty()) {
+            throw new EmptyStackException("Can't perform action, stack is empty!");
+        }
     }
 }

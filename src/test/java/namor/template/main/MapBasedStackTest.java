@@ -44,6 +44,11 @@ public class MapBasedStackTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @Test (expected = EmptyStackException.class)
+    public void whenPeakFromEmptyStackThrowException() {
+        mapBasedStack.peak();
+    }
+
     @Test
     public void whenPushValueStackSizeIncreased() {
         final int expected = 2;
