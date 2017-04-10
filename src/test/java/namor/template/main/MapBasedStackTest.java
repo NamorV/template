@@ -87,4 +87,9 @@ public class MapBasedStackTest {
 
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test (expected = EmptyStackException.class)
+    public void whenPopFromEmptyStackThrowException() {
+        mapBasedStack.pop();
+    }
 }
