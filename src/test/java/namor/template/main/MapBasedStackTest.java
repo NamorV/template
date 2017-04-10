@@ -21,4 +21,14 @@ public class MapBasedStackTest {
 
         assertThat(actual).isTrue();
     }
+
+    @Test
+    public void whenElementPushedToStackIsEmptyExpectsFalse() {
+        final boolean actual;
+
+        mapBasedStack.push(1);
+        actual = mapBasedStack.isEmpty();
+
+        assertThat(actual).isFalse();
+    }
 }
