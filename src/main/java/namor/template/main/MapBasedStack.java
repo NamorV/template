@@ -16,5 +16,8 @@ public class MapBasedStack {
         return top == 0;
     }
 
-
+    public  void push(int value) {
+        storage.put(top, value);
+        top++;
+    }
 }
