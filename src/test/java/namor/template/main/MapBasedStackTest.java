@@ -60,4 +60,17 @@ public class MapBasedStackTest {
 
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    public void whenPopValueStackSizeDecreased() {
+        final int expected = 2;
+        final int actual;
+
+        mapBasedStack.push(1);
+        mapBasedStack.push(2);
+        mapBasedStack.push(3);
+        actual = mapBasedStack.pop();
+
+        assertThat(actual).isEqualTo(expected);
+    }
 }
