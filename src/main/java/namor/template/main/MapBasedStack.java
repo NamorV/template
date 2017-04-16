@@ -9,7 +9,7 @@ public class MapBasedStack {
     private Map<Integer, Integer> storage;
 
     public MapBasedStack() {
-        storage = new HashMap<Integer, Integer>();
+        storage = new HashMap();
     }
 
     public boolean isEmpty() {

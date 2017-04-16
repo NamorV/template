@@ -63,20 +63,21 @@ public class MapBasedStackTest {
 
     @Test
     public void whenPopValueStackSizeDecreased() {
-        final int expected = 2;
-        final int actual;
+        final int firstSize;
+        final int secondSize;
 
         mapBasedStack.push(1);
         mapBasedStack.push(2);
         mapBasedStack.push(3);
+        firstSize = mapBasedStack.size();
         mapBasedStack.pop();
-        actual = mapBasedStack.size();
+        secondSize = mapBasedStack.size();
 
-        assertThat(actual).isEqualTo(expected);
+        assertThat(firstSize).isGreaterThan(secondSize);
     }
 
     @Test
-    public void peakReturnsLastPushedElement() {
+    public void pushReturnsLastPushedElement() {
         final int expected = 3;
         final int actual;
 
