@@ -29,7 +29,7 @@ public class ArrayStack {
 
     public void push(int value) {
         if (top == storage.length) {
-            increaseStackCapacity();
+            increaseCapacity();
         }
 
         storage[top] = value;
@@ -57,7 +57,7 @@ public class ArrayStack {
         return popValue;
     }
 
-    private void increaseStackCapacity() {
+    private void increaseCapacity() {
         storage = Arrays.copyOf(storage, 2*storage.length);
     }
 
