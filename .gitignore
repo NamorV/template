@@ -1,6 +1,7 @@
 build/
 classes/
 .idea/
+/out
 .classpath
 .project
 .settings/

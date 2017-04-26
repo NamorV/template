@@ -1,4 +1,4 @@
-package namor.template.main;
+package namor.template.stack;
 
 import java.util.HashMap;
 import java.util.Map;
