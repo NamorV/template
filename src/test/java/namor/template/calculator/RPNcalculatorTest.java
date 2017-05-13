@@ -13,21 +13,10 @@ public class RPNcalculatorTest {
         rpnCalculato = new RPNcalculator();
     }
 
-    @Test
-    public void ifStringIsCorrectShouldReturnTrue(){
-        final String rpnString = "2 4 + =";
-        final boolean result;
+    @Test(expected = IllegalArgumentException.class)
+    public void ifInputStringIsNotCorrectThorwsException(){
+        final String rpnString = "";
 
-        result = rpnCalculato.IsCorrect(rpnString);
-        assertThat(result).isTrue();
-    }
-
-    @Test
-    public void ifStringIsNotCorrectShouldReturnFalse(){
-        final String rpnString = "2 x + =";
-        final boolean result;
-
-        result = rpnCalculato.IsCorrect(rpnString);
-        assertThat(result).isFalse();
+        rpnCalculato.isCorrect(rpnString);
     }
 }
