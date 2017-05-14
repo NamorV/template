@@ -12,15 +12,7 @@ public enum Signs {
         this.key = key;
     }
 
-    Signs getAction(String x){
-        if ("+".equals(x)){
-            return ADDITION;
-        } else if ("-".equals(x)){
-            return SUBSTRACTION;
-        } else if ("*".equals(x)){
-            return MULTIPLICATION;
-        } else if ("/".equals(x)){
-            return DIVISION;
-        } else throw new IllegalArgumentException();
+    public String getKey() {
+        return key;
     }
 }
