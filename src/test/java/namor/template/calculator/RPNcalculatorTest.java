@@ -49,4 +49,15 @@ public class RPNcalculatorTest {
         actual = rpnCalculator.calculate(rpnString);
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    public void tryIfDivisionWorks(){
+        final int expected = 7;
+        final int actual;
+        final String rpnString = "49 7 /";
+
+        actual = rpnCalculator.calculate(rpnString);
+        assertThat(actual).isEqualTo(expected);
+    }
+
 }
