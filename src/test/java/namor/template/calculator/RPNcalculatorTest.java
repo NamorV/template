@@ -6,17 +6,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RPNcalculatorTest {
 
-    private RPNcalculator rpnCalculato;
+    private RPNcalculator rpnCalculator;
 
     @Before
     public void setUp(){
-        rpnCalculato = new RPNcalculator();
+        rpnCalculator = new RPNcalculator();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void ifInputStringIsNotCorrectThorwsException(){
         final String rpnString = "";
 
-        rpnCalculato.isCorrect(rpnString);
+        rpnCalculator.isCorrect(rpnString);
+    }
+
+    @Test
+    public void tryIfAdditionWorks(){
+        final int expected = 6;
+        final int actual;
+        final String rpnString = "2 4 +";
+
+        actual = rpnCalculator.calculate(rpnString);
+        assertThat(actual).isEqualTo(expected);
     }
 }
