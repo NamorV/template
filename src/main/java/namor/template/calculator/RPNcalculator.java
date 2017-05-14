@@ -38,6 +38,8 @@ public class RPNcalculator {
                     result += firstNumber + secondNumber;
                 } else if(sign.SUBSTRACTION.getKey().equals(retval)){
                     result += firstNumber - secondNumber;
+                } else if(sign.MULTIPLICATION.getKey().equals(retval)){
+                    result += firstNumber * secondNumber;
                 }
             }
         }
