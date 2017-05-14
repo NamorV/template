@@ -36,6 +36,8 @@ public class RPNcalculator {
 
                 if(sign.ADDITION.getKey().equals(retval)){
                     result += firstNumber + secondNumber;
+                } else if(sign.SUBSTRACTION.getKey().equals(retval)){
+                    result += firstNumber - secondNumber;
                 }
             }
         }
