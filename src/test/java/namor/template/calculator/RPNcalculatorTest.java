@@ -39,4 +39,14 @@ public class RPNcalculatorTest {
         actual = rpnCalculator.calculate(rpnString);
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    public void tryIfMultiplicationWorks(){
+        final int expected = 45;
+        final int actual;
+        final String rpnString = "9 5 *";
+
+        actual = rpnCalculator.calculate(rpnString);
+        assertThat(actual).isEqualTo(expected);
+    }
 }
