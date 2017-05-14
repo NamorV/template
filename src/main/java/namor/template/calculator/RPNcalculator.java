@@ -31,11 +31,11 @@ public class RPNcalculator {
             if(retval.matches("^[0-9]+$")){
                 numbers.push(Integer.parseInt(retval));
             } else {
-                firstNumber = numbers.pop();
                 secondNumber = numbers.pop();
+                firstNumber = numbers.pop();
 
                 if(sign.ADDITION.getKey().equals(retval)){
-                    result = firstNumber + secondNumber;
+                    result += firstNumber + secondNumber;
                 }
             }
         }
