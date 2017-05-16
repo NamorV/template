@@ -17,7 +17,7 @@ public class RPNcalculatorTest {
     public void ifInputStringIsNotCorrectThorwsException(){
         final String rpnString = "";
 
-        rpnCalculator.isCorrect(rpnString);
+        rpnCalculator.calculate(rpnString);
     }
 
     @Test
@@ -58,6 +58,23 @@ public class RPNcalculatorTest {
 
         actual = rpnCalculator.calculate(rpnString);
         assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    public void checkIfTwoOrMoreArithmaticOperatinsWorks(){
+        final int expected = 11;
+        final int actual;
+        final String rpnString = "49 7 / 4 +";
+
+        actual = rpnCalculator.calculate(rpnString);
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenSignAndNumberNotSeparetedThrowException(){
+        final String rpnString = "4 3 + 2/";
+
+        rpnCalculator.calculate(rpnString);
     }
 
 }

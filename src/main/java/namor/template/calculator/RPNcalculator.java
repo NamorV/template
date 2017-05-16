@@ -36,22 +36,22 @@ public class RPNcalculator {
                 if(Signs.ADDITION.getKey().equals(retval)){
                     secondNumber = numbers.pop();
                     firstNumber = numbers.pop();
-                    result += firstNumber + secondNumber;
+                    result = firstNumber + secondNumber;
                     numbers.push(result);
                 } else if(Signs.SUBSTRACTION.getKey().equals(retval)){
                     secondNumber = numbers.pop();
                     firstNumber = numbers.pop();
-                    result += firstNumber - secondNumber;
+                    result = firstNumber - secondNumber;
                     numbers.push(result);
                 } else if(Signs.MULTIPLICATION.getKey().equals(retval)){
                     secondNumber = numbers.pop();
                     firstNumber = numbers.pop();
-                    result += firstNumber * secondNumber;
+                    result = firstNumber * secondNumber;
                     numbers.push(result);
                 } else if (Signs.DIVISION.getKey().equals(retval)){
                     secondNumber = numbers.pop();
                     firstNumber = numbers.pop();
-                    result += firstNumber / secondNumber;
+                    result = firstNumber / secondNumber;
                     numbers.push(result);
                 } else {
                     throw new IllegalArgumentException("Input elements are wrong!");
