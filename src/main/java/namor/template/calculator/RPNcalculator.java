@@ -5,7 +5,6 @@ import namor.template.stack.ArrayStack;
 public class RPNcalculator {
     private int result;
     private ArrayStack numbers = new ArrayStack();
-    private Signs sign;
 
     public void isCorrect(String rpnString) throws IllegalArgumentException {
         if(rpnString == null || rpnString == ""){
@@ -17,7 +16,7 @@ public class RPNcalculator {
             x = rpnString.charAt(i);
 
             if(!(Character.isDigit(x) || x == '/' || x == '*' ||
-                    x == '+'|| x== '-' || x == ' ')){
+                    x == '+'|| x == '-' || x == ' ')){
                 throw new IllegalArgumentException("Input elements are wrong!");
             }
         }
@@ -27,21 +26,35 @@ public class RPNcalculator {
         int firstNumber;
         int secondNumber;
 
+        isCorrect(rpnString);
+
         for (String retval: rpnString.split(" ")) {
             if(retval.matches("^[0-9]+$")){
                 numbers.push(Integer.parseInt(retval));
             } else {
-                secondNumber = numbers.pop();
-                firstNumber = numbers.pop();
 
-                if(sign.ADDITION.getKey().equals(retval)){
+                if(Signs.ADDITION.getKey().equals(retval)){
+                    secondNumber = numbers.pop();
+                    firstNumber = numbers.pop();
                     result += firstNumber + secondNumber;
-                } else if(sign.SUBSTRACTION.getKey().equals(retval)){
+                    numbers.push(result);
+                } else if(Signs.SUBSTRACTION.getKey().equals(retval)){
+                    secondNumber = numbers.pop();
+                    firstNumber = numbers.pop();
                     result += firstNumber - secondNumber;
-                } else if(sign.MULTIPLICATION.getKey().equals(retval)){
+                    numbers.push(result);
+                } else if(Signs.MULTIPLICATION.getKey().equals(retval)){
+                    secondNumber = numbers.pop();
+                    firstNumber = numbers.pop();
                     result += firstNumber * secondNumber;
-                } else if (sign.DIVISION.getKey().equals(retval)){
+                    numbers.push(result);
+                } else if (Signs.DIVISION.getKey().equals(retval)){
+                    secondNumber = numbers.pop();
+                    firstNumber = numbers.pop();
                     result += firstNumber / secondNumber;
+                    numbers.push(result);
+                } else {
+                    throw new IllegalArgumentException("Input elements are wrong!");
                 }
             }
         }
