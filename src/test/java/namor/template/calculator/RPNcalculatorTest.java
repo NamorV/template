@@ -13,15 +13,8 @@ public class RPNcalculatorTest {
         rpnCalculator = new RPNcalculator();
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void ifInputStringIsNotCorrectThorwsException(){
-        final String rpnString = "";
-
-        rpnCalculator.calculate(rpnString);
-    }
-
     @Test
-    public void tryIfAdditionWorks(){
+    public void addTwoNumbers(){
         final int expected = 6;
         final int actual;
         final String rpnString = "2 4 +";
@@ -31,7 +24,7 @@ public class RPNcalculatorTest {
     }
 
     @Test
-    public void tryIfSubstractionWorks(){
+    public void substactTwoNumbers(){
         final int expected = 5;
         final int actual;
         final String rpnString = "10 5 -";
@@ -41,7 +34,7 @@ public class RPNcalculatorTest {
     }
 
     @Test
-    public void tryIfMultiplicationWorks(){
+    public void multiplicateTwoNumbers(){
         final int expected = 45;
         final int actual;
         final String rpnString = "9 5 *";
@@ -51,7 +44,7 @@ public class RPNcalculatorTest {
     }
 
     @Test
-    public void tryIfDivisionWorks(){
+    public void divideTwoNumbers(){
         final int expected = 7;
         final int actual;
         final String rpnString = "49 7 /";
@@ -61,7 +54,7 @@ public class RPNcalculatorTest {
     }
 
     @Test
-    public void checkIfTwoOrMoreArithmaticOperatinsWorks(){
+    public void whenTwoArithmaticOperatinsDoneReurnsCorrectNumber(){
         final int expected = 11;
         final int actual;
         final String rpnString = "49 7 / 4 +";
