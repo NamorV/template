@@ -63,11 +63,4 @@ public class RPNcalculatorTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void whenSignAndNumberNotSeparetedThrowException(){
-        final String rpnString = "4 3 + 2/";
-
-        rpnCalculator.calculate(rpnString);
-    }
-
 }

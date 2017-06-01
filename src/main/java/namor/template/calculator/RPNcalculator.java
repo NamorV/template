@@ -6,77 +6,65 @@ public class RPNcalculator {
     private ArrayStack numbers = new ArrayStack();
     Sign sign;
 
-    public int calculate(String rpnString){
-        int count = 0;
-        String[] retval = rpnString.split(" ");
-
-         while (retval.length > count){
-            if(retval[count].matches("^[0-9]+$")){
-                numbers.push(Integer.parseInt(retval[count]));
-            } else {
-                switch (sign.getValue(retval[count])){
-                    case ADDITION:
-                        numbers.push(addition());
-                        break;
-                    case SUBTRACTION:
-                        numbers.push(subtraction());
-                        break;
-                    case MULTIPLICATION:
-                        numbers.push(multiplication());
-                        break;
-                    case DIVISION:
-                        numbers.push(division());
-                        break;
-                    default:
-                        throw new IllegalArgumentException("Input elements are wrong!");
-                }
-            }
-            count++;
+    public int calculate(String inputString){
+        for(String splitData : inputString.split(" ")){
+                A(splitData);
         }
-
         return numbers.pop();
     }
 
-    private int addition(){
-        int result;
-        int firstNumber;
-        int secondNumber;
+    private void A(String splitData) {
+        switch (sign.getValue(splitData)){
+            case ADDITION:
+                numbers.push(addition());
+                break;
+            case SUBTRACTION:
+                numbers.push(subtraction());
+                break;
+            case MULTIPLICATION:
+                numbers.push(multiplication());
+                break;
+            case DIVISION:
+                numbers.push(division());
+                break;
+            case NUMBER:
+                numbers.push(Integer.parseInt(splitData));
+                break;
+        }
+    }
 
-        secondNumber = numbers.pop();
-        firstNumber = numbers.pop();
+    private final int addition(){
+        int result;
+        final int secondNumber = numbers.pop();
+        final int firstNumber = numbers.pop();
+
         result = firstNumber + secondNumber;
         return result;
     }
 
-    private int subtraction(){
+    private final int subtraction(){
         int result;
-        int firstNumber;
-        int secondNumber;
+        final int secondNumber = numbers.pop();
+        final int firstNumber = numbers.pop();
 
-        secondNumber = numbers.pop();
-        firstNumber = numbers.pop();
         result = firstNumber - secondNumber;
         return result;
     }
 
-    private int multiplication(){
+    private final int multiplication(){
         int result;
-        int firstNumber;
-        int secondNumber;
+        final int  secondNumber = numbers.pop();
+        final int firstNumber = numbers.pop();
 
-        secondNumber = numbers.pop();
-        firstNumber = numbers.pop();
         result = firstNumber * secondNumber;
         return result;
     }
 
-    private int division(){
+    private final int division(){
         int result;
-        int firstNumber;
-        int secondNumber;
+        final int secondNumber = numbers.pop();
+        final int firstNumber = numbers.pop();
 
-        secondNumber = numbers.pop();
-        firstNumber = numbers.pop();
         result = firstNumber / secondNumber;
         return result;
     }
