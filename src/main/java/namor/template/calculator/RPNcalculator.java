@@ -4,17 +4,20 @@ import namor.template.stack.ArrayStack;
 
 public class RPNcalculator {
     private ArrayStack numbers = new ArrayStack();
-    Sign sign;
 
     public int calculate(String inputString){
         for(String splitData : inputString.split(" ")){
-                A(splitData);
+            if(isSign(splitData)){
+                doArithmeticOperation(splitData);
+            } else {
+                numbers.push(Integer.parseInt(splitData));
+            }
         }
         return numbers.pop();
     }
 
-    private void A(String splitData) {
-        switch (sign.getValue(splitData)){
+    private void doArithmeticOperation(String splitData) {
+        switch (Sign.getValue(splitData)){
             case ADDITION:
                 numbers.push(addition());
                 break;
@@ -27,45 +30,43 @@ public class RPNcalculator {
             case DIVISION:
                 numbers.push(division());
                 break;
-            case NUMBER:
-                numbers.push(Integer.parseInt(splitData));
-                break;
         }
     }
 
     private final int addition(){
-        int result;
         final int secondNumber = numbers.pop();
         final int firstNumber = numbers.pop();
 
-        result = firstNumber + secondNumber;
-        return result;
+        return firstNumber + secondNumber;
     }
 
     private final int subtraction(){
-        int result;
         final int secondNumber = numbers.pop();
         final int firstNumber = numbers.pop();
-
-        result = firstNumber - secondNumber;
-        return result;
+        
+        return firstNumber - secondNumber;
     }
 
     private final int multiplication(){
-        int result;
         final int  secondNumber = numbers.pop();
         final int firstNumber = numbers.pop();
-
-        result = firstNumber * secondNumber;
-        return result;
+        
+        return firstNumber * secondNumber;
     }
 
     private final int division(){
-        int result;
         final int secondNumber = numbers.pop();
         final int firstNumber = numbers.pop();
 
-        result = firstNumber / secondNumber;
-        return result;
+        return firstNumber / secondNumber;
+    }
+
+    private boolean isSign(String key) {
+        for (Sign sign : Sign.values()) {
+            if (sign.getKey().equals(key)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

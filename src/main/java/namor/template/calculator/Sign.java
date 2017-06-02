@@ -4,12 +4,11 @@ public enum Sign {
     ADDITION("+"),
     SUBTRACTION("-"),
     MULTIPLICATION("*"),
-    DIVISION("/"),
-    NUMBER(" ");
+    DIVISION("/");
 
     String key;
 
-    Sign(String key){
+    Sign(String key) {
         this.key = key;
     }
 
@@ -18,11 +17,11 @@ public enum Sign {
     }
 
     public static Sign getValue(String key) {
-        for(Sign sign : Sign.values()){
-            if (sign.getKey().equals(key)){
+        for (Sign sign : Sign.values()) {
+            if (sign.getKey().equals(key)) {
                 return sign;
             }
         }
-        return NUMBER;
+        throw new IllegalArgumentException("Input elements a wrong!");
     }
 }
