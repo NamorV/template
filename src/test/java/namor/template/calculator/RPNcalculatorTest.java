@@ -17,9 +17,9 @@ public class RPNcalculatorTest {
     public void addTwoNumbers(){
         final int expected = 6;
         final int actual;
-        final String rpnString = "2 4 +";
+        final String arithmeticExpression = "2 4 +";
 
-        actual = rpnCalculator.calculate(rpnString);
+        actual = rpnCalculator.calculate(arithmeticExpression);
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -27,9 +27,9 @@ public class RPNcalculatorTest {
     public void substactTwoNumbers(){
         final int expected = 5;
         final int actual;
-        final String rpnString = "10 5 -";
+        final String arithmeticExpression = "10 5 -";
 
-        actual = rpnCalculator.calculate(rpnString);
+        actual = rpnCalculator.calculate(arithmeticExpression);
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -37,9 +37,9 @@ public class RPNcalculatorTest {
     public void multiplicateTwoNumbers(){
         final int expected = 45;
         final int actual;
-        final String rpnString = "9 5 *";
+        final String arithmeticExpression = "9 5 *";
 
-        actual = rpnCalculator.calculate(rpnString);
+        actual = rpnCalculator.calculate(arithmeticExpression);
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -47,9 +47,9 @@ public class RPNcalculatorTest {
     public void divideTwoNumbers(){
         final int expected = 7;
         final int actual;
-        final String rpnString = "49 7 /";
+        final String arithmeticExpression = "49 7 /";
 
-        actual = rpnCalculator.calculate(rpnString);
+        actual = rpnCalculator.calculate(arithmeticExpression);
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -57,9 +57,9 @@ public class RPNcalculatorTest {
     public void whenTwoArithmaticOperatinsDoneReurnsCorrectNumber(){
         final int expected = 11;
         final int actual;
-        final String rpnString = "49 7 / 4 +";
+        final String arithmeticExpression = "49 7 / 4 +";
 
-        actual = rpnCalculator.calculate(rpnString);
+        actual = rpnCalculator.calculate(arithmeticExpression);
         assertThat(actual).isEqualTo(expected);
     }
 

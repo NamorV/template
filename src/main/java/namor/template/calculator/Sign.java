@@ -22,6 +22,15 @@ public enum Sign {
                 return sign;
             }
         }
-        throw new IllegalArgumentException("Input elements a wrong!");
+        throw new IllegalArgumentException("Input elements are wrong!");
+    }
+
+    public static boolean isSign(String key) {
+        for (Sign sign : Sign.values()) {
+            if (sign.getKey().equals(key)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

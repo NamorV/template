@@ -5,9 +5,9 @@ import namor.template.stack.ArrayStack;
 public class RPNcalculator {
     private ArrayStack numbers = new ArrayStack();
 
-    public int calculate(String inputString){
-        for(String splitData : inputString.split(" ")){
-            if(isSign(splitData)){
+    public int calculate(String arithmeticExpression){
+        for(String splitData : arithmeticExpression.split(" ")){
+            if(Sign.isSign(splitData)){
                 doArithmeticOperation(splitData);
             } else {
                 numbers.push(Integer.parseInt(splitData));
@@ -16,8 +16,8 @@ public class RPNcalculator {
         return numbers.pop();
     }
 
-    private void doArithmeticOperation(String splitData) {
-        switch (Sign.getValue(splitData)){
+    private void doArithmeticOperation(String sign) {
+        switch (Sign.getValue(sign)){
             case ADDITION:
                 numbers.push(addition());
                 break;
@@ -61,12 +61,5 @@ public class RPNcalculator {
         return firstNumber / secondNumber;
     }
 
-    private boolean isSign(String key) {
-        for (Sign sign : Sign.values()) {
-            if (sign.getKey().equals(key)) {
-                return true;
-            }
-        }
-        return false;
-    }
+
 }
