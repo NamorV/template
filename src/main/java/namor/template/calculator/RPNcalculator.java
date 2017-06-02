@@ -16,8 +16,8 @@ public class RPNcalculator {
         return numbers.pop();
     }
 
-    private void doArithmeticOperation(String sign) {
-        switch (Sign.getValue(sign)){
+    private void doArithmeticOperation(String arithmeticOperator) {
+        switch (Sign.getValue(arithmeticOperator)){
             case ADDITION:
                 numbers.push(addition());
                 break;
