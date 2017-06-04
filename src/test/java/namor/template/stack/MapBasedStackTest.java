@@ -1,7 +1,5 @@
 package namor.template.stack;
 
-import namor.template.main.*;
-import namor.template.stack.MapBasedStack;
 import org.junit.Before;
 import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -46,7 +44,7 @@ public class MapBasedStackTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-    @Test (expected = namor.template.main.EmptyStackException.class)
+    @Test (expected = namor.template.stack.EmptyStackException.class)
     public void whenPeakFromEmptyStackThrowException() {
         mapBasedStack.peak();
     }
@@ -90,7 +88,7 @@ public class MapBasedStackTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-    @Test (expected = namor.template.main.EmptyStackException.class)
+    @Test (expected = namor.template.stack.EmptyStackException.class)
     public void whenPopFromEmptyStackThrowException() {
         mapBasedStack.pop();
     }
