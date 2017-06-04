@@ -5,11 +5,11 @@ import namor.template.stack.ArrayStack;
 public class RPNcalculator {
 
 
-    public int calculate(String arithmeticExpression){
+    public int calculate(String arithmeticExpression) {
         ArrayStack numbers = new ArrayStack();
 
-        for(String operationElement : arithmeticExpression.split(" ")){
-            if(Sign.isSign(operationElement)){
+        for (String operationElement : arithmeticExpression.split(" ")) {
+            if (Sign.isSign(operationElement)) {
                 doArithmeticOperation(operationElement, numbers);
             } else {
                 numbers.push(Integer.parseInt(operationElement));
@@ -19,7 +19,7 @@ public class RPNcalculator {
     }
 
     private void doArithmeticOperation(String arithmeticOperator, ArrayStack numbers) {
-        switch (Sign.getValue(arithmeticOperator)){
+        switch (Sign.getValue(arithmeticOperator)) {
             case ADDITION:
                 numbers.push(addition(numbers));
                 break;
@@ -35,28 +35,28 @@ public class RPNcalculator {
         }
     }
 
-    private final int addition(ArrayStack numbers){
+    private final int addition(ArrayStack numbers) {
         final int secondNumber = numbers.pop();
         final int firstNumber = numbers.pop();
 
         return firstNumber + secondNumber;
     }
 
-    private final int subtraction(ArrayStack numbers){
+    private final int subtraction(ArrayStack numbers) {
         final int secondNumber = numbers.pop();
         final int firstNumber = numbers.pop();
-        
+
         return firstNumber - secondNumber;
     }
 
-    private final int multiplication(ArrayStack numbers){
-        final int  secondNumber = numbers.pop();
+    private final int multiplication(ArrayStack numbers) {
+        final int secondNumber = numbers.pop();
         final int firstNumber = numbers.pop();
-        
+
         return firstNumber * secondNumber;
     }
 
-    private final int division(ArrayStack numbers){
+    private final int division(ArrayStack numbers) {
         final int secondNumber = numbers.pop();
         final int firstNumber = numbers.pop();
 
