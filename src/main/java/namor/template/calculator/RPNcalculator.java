@@ -6,7 +6,7 @@ public class RPNcalculator {
 
 
     public int calculate(String arithmeticExpression) {
-        ArrayStack numbers = new ArrayStack();
+        ArrayStack<Integer> numbers = new ArrayStack<Integer>();
 
         for (String operationElement : arithmeticExpression.split(" ")) {
             if (Sign.isSign(operationElement)) {
@@ -35,28 +35,28 @@ public class RPNcalculator {
         }
     }
 
-    private final int addition(ArrayStack numbers) {
+    private final int addition(ArrayStack<Integer> numbers) {
         final int secondNumber = numbers.pop();
         final int firstNumber = numbers.pop();
 
         return firstNumber + secondNumber;
     }
 
-    private final int subtraction(ArrayStack numbers) {
+    private final int subtraction(ArrayStack<Integer> numbers) {
         final int secondNumber = numbers.pop();
         final int firstNumber = numbers.pop();
 
         return firstNumber - secondNumber;
     }
 
-    private final int multiplication(ArrayStack numbers) {
+    private final int multiplication(ArrayStack<Integer> numbers) {
         final int secondNumber = numbers.pop();
         final int firstNumber = numbers.pop();
 
         return firstNumber * secondNumber;
     }
 
-    private final int division(ArrayStack numbers) {
+    private final int division(ArrayStack<Integer> numbers) {
         final int secondNumber = numbers.pop();
         final int firstNumber = numbers.pop();
 

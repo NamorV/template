@@ -6,11 +6,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class MapBasedStackTest {
 
-    private MapBasedStack mapBasedStack;
+    private MapBasedStack<Integer> mapBasedStack;
 
     @Before
     public void setUp() throws Exception {
-        mapBasedStack = new MapBasedStack();
+        mapBasedStack = new MapBasedStack<>();
     }
 
     @Test
