@@ -64,4 +64,37 @@ public class RPNcalculatorTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @Test
+    public void stackWorksWithFloat() {
+        RPNcalculator<Float> FrpnCalculator = new RPNcalculator<>(Float.class);
+        final float expected = 4.4f;
+        final float actual;
+        final String arithmeticExpression = "2.2 3.3 + 1.1 -";
+
+        actual = FrpnCalculator.calculate(arithmeticExpression);
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    public void stackWorksWithDouble() {
+        RPNcalculator<Double> FrpnCalculator = new RPNcalculator<>(Double.class);
+        final double expected = 4.4;
+        final double actual;
+        final String arithmeticExpression = "2.2 3.3 + 1.1 -";
+
+        actual = FrpnCalculator.calculate(arithmeticExpression);
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    public void stackWorksWithLong() {
+        RPNcalculator<Long> FrpnCalculator = new RPNcalculator<>(Long.class);
+        final long expected = 4L;
+        final long actual;
+        final String arithmeticExpression = "2 3 + 1 -";
+
+        actual = FrpnCalculator.calculate(arithmeticExpression);
+        assertThat(actual).isEqualTo(expected);
+    }
+
 }
