@@ -7,11 +7,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RPNcalculatorTest {
 
-    private RPNcalculator rpnCalculator;
+    private RPNcalculator<Integer> rpnCalculator;
 
     @Before
     public void setUp() {
-        rpnCalculator = new RPNcalculator();
+        rpnCalculator = new RPNcalculator<>(Integer.class);
     }
 
     @Test
