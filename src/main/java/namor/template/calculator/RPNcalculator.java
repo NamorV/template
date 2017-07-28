@@ -1,5 +1,6 @@
 package namor.template.calculator;
 
+import com.sun.org.apache.bcel.internal.generic.FLOAD;
 import namor.template.stack.ArrayStack;
 
 public class RPNcalculator<T extends Number> {
@@ -46,9 +47,9 @@ public class RPNcalculator<T extends Number> {
     private void convertStringToNumber(Class<T> type, ArrayStack<T> numbers, String operationElement) {
         if(type == Integer.class) {
             numbers.push((T)(Integer)(Integer.parseInt(operationElement)));
-        } else if(type == Integer.class) {
+        } else if(type == Double.class) {
             numbers.push((T)(Double)(Double.parseDouble(operationElement)));
-        } else if(type == Integer.class) {
+        } else if(type == Float.class) {
             numbers.push((T)(Float)(Float.parseFloat(operationElement)));
         } else {
             numbers.push((T)(Long)(Long.parseLong(operationElement)));
