@@ -98,4 +98,10 @@ public class RPNcalculatorTest {
         actual = FrpnCalculator.calculate(arithmeticExpression);
         assertThat(actual).isEqualTo(expected);
     }
+    
+    @Test
+    public void stackWorksWithMapBasedStack() {
+        RPNcalculator<Integer> mrpnCalculator = new RPNcalculator<>(Integer.class, MapBasedStack.class);
+        assertThat(mrpnCalculator.getNumbers().getClass()).isEqualTo(MapBasedStack.class);
+    }
 }
