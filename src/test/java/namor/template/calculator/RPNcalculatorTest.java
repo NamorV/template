@@ -1,5 +1,7 @@
 package namor.template.calculator;
 
+import namor.template.stack.ArrayStack;
+import namor.template.stack.MapBasedStack;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,7 +13,7 @@ public class RPNcalculatorTest {
 
     @Before
     public void setUp() {
-        rpnCalculator = new RPNcalculator<>(Integer.class);
+        rpnCalculator = new RPNcalculator<>(Integer.class, ArrayStack.class);
     }
 
     @Test
@@ -66,7 +68,7 @@ public class RPNcalculatorTest {
 
     @Test
     public void stackWorksWithFloat() {
-        RPNcalculator<Float> FrpnCalculator = new RPNcalculator<>(Float.class);
+        RPNcalculator<Float> FrpnCalculator = new RPNcalculator<>(Float.class, ArrayStack.class);
         final float expected = 4.4f;
         final float actual;
         final String arithmeticExpression = "2.2 3.3 + 1.1 -";
@@ -77,7 +79,7 @@ public class RPNcalculatorTest {
 
     @Test
     public void stackWorksWithDouble() {
-        RPNcalculator<Double> FrpnCalculator = new RPNcalculator<>(Double.class);
+        RPNcalculator<Double> FrpnCalculator = new RPNcalculator<>(Double.class, ArrayStack.class);
         final double expected = 4.4;
         final double actual;
         final String arithmeticExpression = "2.2 3.3 + 1.1 -";
@@ -88,7 +90,7 @@ public class RPNcalculatorTest {
 
     @Test
     public void stackWorksWithLong() {
-        RPNcalculator<Long> FrpnCalculator = new RPNcalculator<>(Long.class);
+        RPNcalculator<Long> FrpnCalculator = new RPNcalculator<>(Long.class, ArrayStack.class);
         final long expected = 4L;
         final long actual;
         final String arithmeticExpression = "2 3 + 1 -";
@@ -96,5 +98,4 @@ public class RPNcalculatorTest {
         actual = FrpnCalculator.calculate(arithmeticExpression);
         assertThat(actual).isEqualTo(expected);
     }
-
 }

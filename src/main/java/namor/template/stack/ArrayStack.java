@@ -2,7 +2,7 @@ package namor.template.stack;
 
 import java.util.Arrays;
 
-public class ArrayStack<T> {
+public class ArrayStack<T> implements Stack<T> {
 
     private int top;
     private int size;

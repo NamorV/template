@@ -1,12 +1,23 @@
 package namor.template.calculator;
 
-import com.sun.org.apache.bcel.internal.generic.FLOAD;
 import namor.template.stack.ArrayStack;
+import namor.template.stack.MapBasedStack;
+import namor.template.stack.Stack;
 
-public class RPNcalculator<T extends Number> {
+public class RPNcalculator<T extends Number>{
     private final Class<T> type;
+    private Stack<T> numbers;
 
-    public RPNcalculator(Class<T> type) {
+    public Stack<T> getNumbers() {
+        return numbers;
+    }
+
+    public RPNcalculator(Class<T> type, Class stack) {
+        if (stack.equals(ArrayStack.class)){
+            numbers = new ArrayStack<>();
+        } else if (stack.equals(MapBasedStack.class)){
+            numbers = new MapBasedStack<>();
+        }
         this.type = type;
     }
 
@@ -15,7 +26,6 @@ public class RPNcalculator<T extends Number> {
     }
 
     public T calculate(String arithmeticExpression) {
-        ArrayStack<T> numbers = new ArrayStack<>();
 
         for (String operationElement : arithmeticExpression.split(" ")) {
             if (Sign.isSign(operationElement)) {
@@ -27,7 +37,7 @@ public class RPNcalculator<T extends Number> {
         return numbers.pop();
     }
 
-    private void doArithmeticOperation(String arithmeticOperator, ArrayStack numbers) {
+    private void doArithmeticOperation(String arithmeticOperator, Stack<T> numbers) {
         switch (Sign.getValue(arithmeticOperator)) {
             case ADDITION:
                 numbers.push(addition(numbers.pop(), numbers.pop()));
@@ -44,7 +54,7 @@ public class RPNcalculator<T extends Number> {
         }
     }
 
-    private void convertStringToNumber(Class<T> type, ArrayStack<T> numbers, String operationElement) {
+    private void convertStringToNumber(Class<T> type, Stack<T> numbers, String operationElement) {
         if(type == Integer.class) {
             numbers.push((T)(Integer)(Integer.parseInt(operationElement)));
         } else if(type == Double.class) {

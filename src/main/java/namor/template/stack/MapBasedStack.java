@@ -3,7 +3,7 @@ package namor.template.stack;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MapBasedStack<T> {
+public class MapBasedStack<T> implements Stack<T> {
 
     private int top;
     private Map<Integer, T> storage;
