@@ -6,11 +6,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ArrayStackTest {
 
-    private ArrayStack arrayStack;
+    private ArrayStack<Integer> arrayStack;
 
     @Before
     public void setUp() throws Exception {
-        arrayStack = new ArrayStack();
+        arrayStack = new ArrayStack<>();
     }
 
     @Test
@@ -103,4 +103,34 @@ public class ArrayStackTest {
         assertThat(actual).isGreaterThan(firstSize);
     }
 
+    @Test
+    public void stackWorksWithString() {
+        ArrayStack<String> stringArrayStack = new ArrayStack<>(3);
+        final String expected = "B";
+        String actual = "D";
+
+        stringArrayStack.push("A");
+        stringArrayStack.push("B");
+        stringArrayStack.push("C");
+        stringArrayStack.pop();
+
+        if(!stringArrayStack.isEmpty()) {
+            actual = stringArrayStack.pop();
+        }
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    public void stackWorksWithBoolean() {
+        ArrayStack<Boolean> booleanArrayStack = new ArrayStack<>(3);
+        final boolean expected = true;
+        final boolean actual;
+
+        if(booleanArrayStack.isEmpty()) {
+            booleanArrayStack.push(false);
+            booleanArrayStack.push(true);
+        }
+        actual = booleanArrayStack.pop();
+        assertThat(actual).isEqualTo(expected);
+    }
 }

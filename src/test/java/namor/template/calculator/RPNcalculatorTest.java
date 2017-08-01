@@ -1,5 +1,7 @@
 package namor.template.calculator;
 
+import namor.template.stack.ArrayStack;
+import namor.template.stack.MapBasedStack;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,11 +9,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RPNcalculatorTest {
 
-    private RPNcalculator rpnCalculator;
+    private RPNcalculator<Integer> rpnCalculator;
 
     @Before
     public void setUp() {
-        rpnCalculator = new RPNcalculator();
+        rpnCalculator = new RPNcalculator<>(Integer.class, ArrayStack.class);
     }
 
     @Test
@@ -64,4 +66,42 @@ public class RPNcalculatorTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @Test
+    public void stackWorksWithFloat() {
+        RPNcalculator<Float> FrpnCalculator = new RPNcalculator<>(Float.class, ArrayStack.class);
+        final float expected = 4.4f;
+        final float actual;
+        final String arithmeticExpression = "2.2 3.3 + 1.1 -";
+
+        actual = FrpnCalculator.calculate(arithmeticExpression);
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    public void stackWorksWithDouble() {
+        RPNcalculator<Double> FrpnCalculator = new RPNcalculator<>(Double.class, ArrayStack.class);
+        final double expected = 4.4;
+        final double actual;
+        final String arithmeticExpression = "2.2 3.3 + 1.1 -";
+
+        actual = FrpnCalculator.calculate(arithmeticExpression);
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    public void stackWorksWithLong() {
+        RPNcalculator<Long> FrpnCalculator = new RPNcalculator<>(Long.class, ArrayStack.class);
+        final long expected = 4L;
+        final long actual;
+        final String arithmeticExpression = "2 3 + 1 -";
+
+        actual = FrpnCalculator.calculate(arithmeticExpression);
+        assertThat(actual).isEqualTo(expected);
+    }
+    
+    @Test
+    public void stackWorksWithMapBasedStack() {
+        RPNcalculator<Integer> mrpnCalculator = new RPNcalculator<>(Integer.class, MapBasedStack.class);
+        assertThat(mrpnCalculator.getNumbers().getClass()).isEqualTo(MapBasedStack.class);
+    }
 }

@@ -3,25 +3,25 @@ package namor.template.stack;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MapBasedStack {
+public class MapBasedStack<T> implements Stack<T> {
 
     private int top;
-    private Map<Integer, Integer> storage;
+    private Map<Integer, T> storage;
 
     public MapBasedStack() {
-        storage = new HashMap<Integer, Integer>();
+        storage = new HashMap<Integer, T>();
     }
 
     public boolean isEmpty() {
         return top == 0;
     }
 
-    public  void push(int value) {
+    public  void push(T value) {
         storage.put(top, value);
         top++;
     }
 
-    public int peak() {
+    public T peak() {
         validateStackNotEmpty();
 
         return storage.get(top-1);
@@ -31,8 +31,8 @@ public class MapBasedStack {
         return top;
     }
 
-    public int pop() {
-        int value;
+    public T pop() {
+        T value;
 
         validateStackNotEmpty();
         value = peak();

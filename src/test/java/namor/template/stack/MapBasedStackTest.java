@@ -6,11 +6,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class MapBasedStackTest {
 
-    private MapBasedStack mapBasedStack;
+    private MapBasedStack<Integer> mapBasedStack;
 
     @Before
     public void setUp() throws Exception {
-        mapBasedStack = new MapBasedStack();
+        mapBasedStack = new MapBasedStack<>();
     }
 
     @Test
@@ -91,5 +91,36 @@ public class MapBasedStackTest {
     @Test (expected = namor.template.stack.EmptyStackException.class)
     public void whenPopFromEmptyStackThrowException() {
         mapBasedStack.pop();
+    }
+
+    @Test
+    public void stackWorksWithFloat() {
+        ArrayStack<Float> stringArrayStack = new ArrayStack<>(3);
+        final float expected = 2.16f;
+        float actual = 4.4f;
+
+        stringArrayStack.push(1.1f);
+        stringArrayStack.push(2.16f);
+        stringArrayStack.push(3.3f);
+        stringArrayStack.pop();
+
+        if(!stringArrayStack.isEmpty()) {
+            actual = stringArrayStack.pop();
+        }
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    public void stackWorksWithChar() {
+        ArrayStack<Character> booleanArrayStack = new ArrayStack<>(3);
+        final char expected = 'a';
+        final char actual;
+
+        if(booleanArrayStack.isEmpty()) {
+            booleanArrayStack.push('A');
+            booleanArrayStack.push('a');
+        }
+        actual = booleanArrayStack.pop();
+        assertThat(actual).isEqualTo(expected);
     }
 }
