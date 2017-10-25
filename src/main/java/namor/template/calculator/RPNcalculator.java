@@ -4,65 +4,65 @@ import namor.template.stack.Stack;
 
 public class RPNcalculator {
 
-    private Stack numbers;
+    private Stack<Double> operands;
 
-    public RPNcalculator(Stack stk) {
-        this.numbers = stk;
+    public RPNcalculator(Stack operands) {
+        this.operands = operands;
     }
 
     public double calculate(String arithmeticExpression) {
 
         for (String operationElement : arithmeticExpression.split(" ")) {
             if (Sign.isSign(operationElement)) {
-                doArithmeticOperation(operationElement, numbers);
+                doArithmeticOperation(operationElement, operands);
             } else {
-                numbers.push(Double.parseDouble(operationElement));
+                operands.push(Double.parseDouble(operationElement));
             }
         }
-        return (double) numbers.pop();
+        return operands.pop();
     }
 
     private void doArithmeticOperation(String arithmeticOperator, Stack numbers) {
         switch (Sign.getValue(arithmeticOperator)) {
             case ADDITION:
-                numbers.push(addition(numbers));
+                numbers.push(add(numbers));
                 break;
             case SUBTRACTION:
-                numbers.push(subtraction(numbers));
+                numbers.push(subtract(numbers));
                 break;
             case MULTIPLICATION:
                 numbers.push(multiplication(numbers));
                 break;
             case DIVISION:
-                numbers.push(division(numbers));
+                numbers.push(divide(numbers));
                 break;
         }
     }
 
-    private final double addition(Stack numbers) {
-        final double secondNumber = (Double) numbers.pop();
-        final double firstNumber = (Double) numbers.pop();
+    private final double add(Stack<Double> numbers) {
+        final double secondNumber = numbers.pop();
+        final double firstNumber = numbers.pop();
 
         return firstNumber + secondNumber;
     }
 
-    private final double subtraction(Stack numbers) {
-        final double secondNumber = (Double) numbers.pop();
-        final double firstNumber = (Double) numbers.pop();
+    private final double subtract(Stack<Double> numbers) {
+        final double secondNumber = numbers.pop();
+        final double firstNumber = numbers.pop();
 
         return firstNumber - secondNumber;
     }
 
-    private final double multiplication(Stack numbers) {
-        final double secondNumber = (Double) numbers.pop();
-        final double firstNumber = (Double) numbers.pop();
+    private final double multiplication(Stack<Double> numbers) {
+        final double secondNumber = numbers.pop();
+        final double firstNumber = numbers.pop();
 
         return firstNumber * secondNumber;
     }
 
-    private final double division(Stack numbers) {
-        final double secondNumber = (Double) numbers.pop();
-        final double firstNumber = (Double) numbers.pop();
+    private final double divide(Stack<Double> numbers) {
+        final double secondNumber = numbers.pop();
+        final double firstNumber = numbers.pop();
 
         return firstNumber / secondNumber;
     }

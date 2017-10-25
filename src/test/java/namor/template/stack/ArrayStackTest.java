@@ -102,35 +102,4 @@ public class ArrayStackTest {
         actual = myStack.size();
         assertThat(actual).isGreaterThan(firstSize);
     }
-
-    @Test
-    public void stackWorksWithString() {
-        ArrayStack<String> stringArrayStack = new ArrayStack<>(3);
-        final String expected = "B";
-        String actual = "D";
-
-        stringArrayStack.push("A");
-        stringArrayStack.push("B");
-        stringArrayStack.push("C");
-        stringArrayStack.pop();
-
-        if(!stringArrayStack.isEmpty()) {
-            actual = stringArrayStack.pop();
-        }
-        assertThat(actual).isEqualTo(expected);
-    }
-
-    @Test
-    public void stackWorksWithBoolean() {
-        ArrayStack<Boolean> booleanArrayStack = new ArrayStack<>(3);
-        final boolean expected = true;
-        final boolean actual;
-
-        if(booleanArrayStack.isEmpty()) {
-            booleanArrayStack.push(false);
-            booleanArrayStack.push(true);
-        }
-        actual = booleanArrayStack.pop();
-        assertThat(actual).isEqualTo(expected);
-    }
 }
