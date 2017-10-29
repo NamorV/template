@@ -29,7 +29,7 @@ public class RPNcalculatorTest {
         final double expected = 5;
         final double actual;
         rpnCalculator = new RPNcalculator(new ArrayStack<Float>());
-        final String arithmeticExpression = "10f 5f -";
+        final String arithmeticExpression = "10 5 -";
 
         actual = rpnCalculator.calculate(arithmeticExpression);
         assertThat(actual).isEqualTo(expected);

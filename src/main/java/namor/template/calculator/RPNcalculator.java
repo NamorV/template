@@ -23,18 +23,23 @@ public class RPNcalculator {
     }
 
     private void doArithmeticOperation(String arithmeticOperator, Stack numbers) {
+        double result;
         switch (Sign.getValue(arithmeticOperator)) {
             case ADDITION:
-                numbers.push(add(numbers));
+                result = add(numbers);
+                numbers.push(result);
                 break;
             case SUBTRACTION:
-                numbers.push(subtract(numbers));
+                result = subtract(numbers);
+                numbers.push(result);
                 break;
             case MULTIPLICATION:
-                numbers.push(multiplication(numbers));
+                result = multiplication(numbers);
+                numbers.push(result);
                 break;
             case DIVISION:
-                numbers.push(divide(numbers));
+                result = divide(numbers);
+                numbers.push(result);
                 break;
         }
     }
