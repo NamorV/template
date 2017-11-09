@@ -2,10 +2,7 @@ package namor.template.calculator;
 
 import namor.template.stack.ArrayStack;
 import namor.template.stack.MapBasedStack;
-import org.junit.Before;
 import org.junit.Test;
-
-import java.util.zip.DeflaterOutputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
