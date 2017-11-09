@@ -6,11 +6,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ArrayStackTest {
 
-    private ArrayStack arrayStack;
+    private ArrayStack<Integer> arrayStack;
 
     @Before
     public void setUp() throws Exception {
-        arrayStack = new ArrayStack();
+        arrayStack = new ArrayStack<>();
     }
 
     @Test
@@ -102,5 +102,4 @@ public class ArrayStackTest {
         actual = myStack.size();
         assertThat(actual).isGreaterThan(firstSize);
     }
-
 }

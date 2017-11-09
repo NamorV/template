@@ -2,11 +2,11 @@ package namor.template.stack;
 
 import java.util.Arrays;
 
-public class ArrayStack {
+public class ArrayStack<T> implements Stack<T> {
 
     private int top;
     private int size;
-    private int[] storage;
+    private T[] storage;
     private static final int DEFAULT_SIZE = 10;
 
     public ArrayStack(int size) {
@@ -15,19 +15,19 @@ public class ArrayStack {
         }
 
         this.size = size;
-        storage = new int[size];
+        storage = (T[])(new Object[size]);
     }
 
     public ArrayStack() {
         this.size = DEFAULT_SIZE;
-        storage = new int[size];
+        storage = (T[])(new Object[size]);
     }
 
     public boolean isEmpty() {
         return top == 0;
     }
 
-    public void push(int value) {
+    public void push(T value) {
         if (top == storage.length) {
             increaseCapacity();
         }
@@ -40,18 +40,18 @@ public class ArrayStack {
         return top;
     }
 
-    public int peak () {
+    public T peak () {
         validateNotEmpty();
 
         return storage[top - 1];
     }
 
-    public int pop() {
+    public T pop() {
         validateNotEmpty();
 
-        int popValue = storage[top - 1];
+        T popValue = storage[top - 1];
 
-        storage[top - 1] = 0;
+        storage[top - 1] = null;
         top--;
 
         return popValue;

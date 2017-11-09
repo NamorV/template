@@ -1,64 +1,73 @@
 package namor.template.calculator;
 
-import namor.template.stack.ArrayStack;
+import namor.template.stack.Stack;
 
 public class RPNcalculator {
 
+    private Stack<Double> operands;
 
-    public int calculate(String arithmeticExpression) {
-        ArrayStack numbers = new ArrayStack();
+    public RPNcalculator(Stack operands) {
+        this.operands = operands;
+    }
+
+    public double calculate(String arithmeticExpression) {
 
         for (String operationElement : arithmeticExpression.split(" ")) {
             if (Sign.isSign(operationElement)) {
-                doArithmeticOperation(operationElement, numbers);
+                doArithmeticOperation(operationElement, operands);
             } else {
-                numbers.push(Integer.parseInt(operationElement));
+                operands.push(Double.parseDouble(operationElement));
             }
         }
-        return numbers.pop();
+        return operands.pop();
     }
 
-    private void doArithmeticOperation(String arithmeticOperator, ArrayStack numbers) {
+    private void doArithmeticOperation(String arithmeticOperator, Stack numbers) {
+        double result;
         switch (Sign.getValue(arithmeticOperator)) {
             case ADDITION:
-                numbers.push(addition(numbers));
+                result = add(numbers);
+                numbers.push(result);
                 break;
             case SUBTRACTION:
-                numbers.push(subtraction(numbers));
+                result = subtract(numbers);
+                numbers.push(result);
                 break;
             case MULTIPLICATION:
-                numbers.push(multiplication(numbers));
+                result = multiplication(numbers);
+                numbers.push(result);
                 break;
             case DIVISION:
-                numbers.push(division(numbers));
+                result = divide(numbers);
+                numbers.push(result);
                 break;
         }
     }
 
-    private final int addition(ArrayStack numbers) {
-        final int secondNumber = numbers.pop();
-        final int firstNumber = numbers.pop();
+    private final double add(Stack<Double> numbers) {
+        final double secondNumber = numbers.pop();
+        final double firstNumber = numbers.pop();
 
         return firstNumber + secondNumber;
     }
 
-    private final int subtraction(ArrayStack numbers) {
-        final int secondNumber = numbers.pop();
-        final int firstNumber = numbers.pop();
+    private final double subtract(Stack<Double> numbers) {
+        final double secondNumber = numbers.pop();
+        final double firstNumber = numbers.pop();
 
         return firstNumber - secondNumber;
     }
 
-    private final int multiplication(ArrayStack numbers) {
-        final int secondNumber = numbers.pop();
-        final int firstNumber = numbers.pop();
+    private final double multiplication(Stack<Double> numbers) {
+        final double secondNumber = numbers.pop();
+        final double firstNumber = numbers.pop();
 
         return firstNumber * secondNumber;
     }
 
-    private final int division(ArrayStack numbers) {
-        final int secondNumber = numbers.pop();
-        final int firstNumber = numbers.pop();
+    private final double divide(Stack<Double> numbers) {
+        final double secondNumber = numbers.pop();
+        final double firstNumber = numbers.pop();
 
         return firstNumber / secondNumber;
     }
