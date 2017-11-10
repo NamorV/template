@@ -7,7 +7,7 @@ public class ClassicCalculator {
     private Stack<Double> operands;
     private String sign = null;
 
-    public ClassicCalculator(Stack<Double> operands) {
+    public ClassicCalculator(Stack operands) {
         this.operands = operands;
     }
 

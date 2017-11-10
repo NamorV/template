@@ -20,4 +20,15 @@ public class ClassicCalculatorTest {
         actual = classicCalculator.calculate(arithmeticExpression);
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    public void substactTwoNumbers() {
+        final double expected = 6;
+        final double actual;
+        classicCalculator = new ClassicCalculator(new ArrayStack());
+        final String arithmeticExpression = "10 4 -";
+
+        actual = classicCalculator.calculate(arithmeticExpression);
+        assertThat(actual).isEqualTo(expected);
+    }
 }
