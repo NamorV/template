@@ -12,10 +12,10 @@ public class ClassicCalculatorTest {
 
     @Test
     public void addTwoNumbers() {
-        final double expected = 6.4;
+        final double expected = 7;
         final double actual;
-        classicCalculator = new ClassicCalculator(new ArrayStack<Double>());
-        final String arithmeticExpression = "2.1 4.3 +";
+        classicCalculator = new ClassicCalculator(new ArrayStack());
+        final String arithmeticExpression = "2 + 4 + 1";
 
         actual = classicCalculator.calculate(arithmeticExpression);
         assertThat(actual).isEqualTo(expected);
