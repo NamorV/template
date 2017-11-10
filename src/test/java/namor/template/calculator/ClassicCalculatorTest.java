@@ -31,4 +31,15 @@ public class ClassicCalculatorTest {
         actual = classicCalculator.calculate(arithmeticExpression);
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    public void multiplicateTwoNumbers() {
+        final double expected = 45;
+        final double actual;
+        classicCalculator = new ClassicCalculator(new ArrayStack<Long>());
+        final String arithmeticExpression = "9 * 5";
+
+        actual = classicCalculator.calculate(arithmeticExpression);
+        assertThat(actual).isEqualTo(expected);
+    }
 }
