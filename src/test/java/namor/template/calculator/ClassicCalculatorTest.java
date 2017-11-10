@@ -22,11 +22,11 @@ public class ClassicCalculatorTest {
     }
 
     @Test
-    public void substactTwoNumbers() {
-        final double expected = 6;
+    public void subtractTwoNumbers() {
+        final double expected = 4;
         final double actual;
         classicCalculator = new ClassicCalculator(new ArrayStack());
-        final String arithmeticExpression = "10 4 -";
+        final String arithmeticExpression = "10 - 4 - 2";
 
         actual = classicCalculator.calculate(arithmeticExpression);
         assertThat(actual).isEqualTo(expected);

@@ -41,7 +41,12 @@ public class ClassicCalculator {
                 result = add(numbers);
                 numbers.push(result);
                 break;
+            case SUBTRACTION:
+                result = subtract(numbers);
+                numbers.push(result);
+                break;
         }
+
     }
 
     private final double add(Stack<Double> numbers) {
@@ -49,5 +54,12 @@ public class ClassicCalculator {
         final double firstNumber = numbers.pop();
 
         return firstNumber + secondNumber;
+    }
+
+    private final double subtract(Stack<Double> numbers) {
+        final double secondNumber = numbers.pop();
+        final double firstNumber = numbers.pop();
+
+        return firstNumber - secondNumber;
     }
 }
