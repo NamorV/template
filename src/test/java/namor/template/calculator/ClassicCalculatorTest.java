@@ -42,4 +42,15 @@ public class ClassicCalculatorTest {
         actual = classicCalculator.calculate(arithmeticExpression);
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    public void divideTwoNumbers() {
+        final double expected = 7;
+        final double actual;
+        classicCalculator = new ClassicCalculator(new ArrayStack<Integer>());
+        final String arithmeticExpression = "42 6 /";
+
+        actual = classicCalculator.calculate(arithmeticExpression);
+        assertThat(actual).isEqualTo(expected);
+    }
 }
