@@ -48,7 +48,18 @@ public class ClassicCalculatorTest {
         final double expected = 7;
         final double actual;
         classicCalculator = new ClassicCalculator(new ArrayStack<Integer>());
-        final String arithmeticExpression = "42 6 /";
+        final String arithmeticExpression = "42 / 6";
+
+        actual = classicCalculator.calculate(arithmeticExpression);
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    public void whenTwoArithmaticOperatinsDoneReurnsCorrectNumber() {
+        final double expected = 28;
+        final double actual;
+        classicCalculator = new ClassicCalculator(new ArrayStack<Integer>());
+        final String arithmeticExpression = "49 + 7 / 2";
 
         actual = classicCalculator.calculate(arithmeticExpression);
         assertThat(actual).isEqualTo(expected);
