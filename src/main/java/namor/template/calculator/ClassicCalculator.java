@@ -1,86 +1,85 @@
 package namor.template.calculator;
 
-import namor.template.stack.Stack;
+import java.util.LinkedList;
 
 public class ClassicCalculator {
 
-    private Stack<Double> operands;
-    private String sign = null;
+    private LinkedList<String> operands;
 
-    public ClassicCalculator(Stack operands) {
-        this.operands = operands;
+    public ClassicCalculator() {
+        this.operands = new LinkedList<>();
     }
 
     public double calculate(String arithmeticExpression) {
 
         for (String operationElement : arithmeticExpression.split(" ")) {
-            if (Sign.isSign(operationElement)) {
-                useSign(operationElement, operands);
-            } else {
-                operands.push(Double.parseDouble(operationElement));
-            }
+            operands.addLast(operationElement);
         }
 
-        useSign(null, operands);
-        return operands.pop();
-    }
-
-    private void useSign(String arithmeticOperator, Stack numbers) {
-        if (sign == null) {
-            sign = arithmeticOperator;
-        } else if (sign != null) {
-            doArithmeticOperation(sign, numbers);
-            sign = arithmeticOperator;
+        while (operands.size() != 1) {
+            doArithmeticOperation();
         }
+
+        return Double.parseDouble(operands.pop());
     }
 
-    private void doArithmeticOperation(String arithmeticOperator, Stack numbers) {
+    private void doArithmeticOperation () {
+        int listPosition = 0;
         double result;
-        switch (Sign.getValue(arithmeticOperator)) {
+
+        while (!Sign.isSign(operands.get(listPosition))) {
+            listPosition++;
+        }
+
+        switch (Sign.getValue(operands.get(listPosition))) {
             case ADDITION:
-                result = add(numbers);
-                numbers.push(result);
+                result = add(listPosition);
+                operands.addFirst(String.valueOf(result));
                 break;
             case SUBTRACTION:
-                result = subtract(numbers);
-                numbers.push(result);
+                result = subtract(listPosition);
+                operands.addFirst(String.valueOf(result));
                 break;
             case MULTIPLICATION:
-                result = multiplication(numbers);
-                numbers.push(result);
+                result = multiply(listPosition);
+                operands.addFirst(String.valueOf(result));
                 break;
             case DIVISION:
-                result = divide(numbers);
-                numbers.push(result);
+                result = divide(listPosition);
+                operands.addFirst(String.valueOf(result));
                 break;
         }
 
     }
 
-    private final double add(Stack<Double> numbers) {
-        final double secondNumber = numbers.pop();
-        final double firstNumber = numbers.pop();
+    private final double add(int listPosition) {
+        final double firstNumber = Double.parseDouble(operands.remove(listPosition - 1));
+        final double secondNumber = Double.parseDouble(operands.remove(listPosition));
+        operands.removeFirst();
 
         return firstNumber + secondNumber;
     }
 
-    private final double subtract(Stack<Double> numbers) {
-        final double secondNumber = numbers.pop();
-        final double firstNumber = numbers.pop();
+    private final double subtract(int listPosition) {
+        final double firstNumber = Double.parseDouble(operands.remove(listPosition - 1));
+        final double secondNumber = Double.parseDouble(operands.remove(listPosition));
+        operands.removeFirst();
 
         return firstNumber - secondNumber;
     }
 
-    private final double multiplication(Stack<Double> numbers) {
-        final double secondNumber = numbers.pop();
-        final double firstNumber = numbers.pop();
+    private final double multiply(int listPosition) {
+        final double firstNumber = Double.parseDouble(operands.remove(listPosition - 1));
+        final double secondNumber = Double.parseDouble(operands.remove(listPosition));
+        operands.removeFirst();
 
         return firstNumber * secondNumber;
     }
 
-    private final double divide(Stack<Double> numbers) {
-        final double secondNumber = numbers.pop();
-        final double firstNumber = numbers.pop();
+    private final double divide(int listPosition) {
+        final double firstNumber = Double.parseDouble(operands.remove(listPosition - 1));
+        final double secondNumber = Double.parseDouble(operands.remove(listPosition));
+        operands.removeFirst();
 
         return firstNumber / secondNumber;
     }
