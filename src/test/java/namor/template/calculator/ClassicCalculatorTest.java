@@ -9,7 +9,7 @@ public class ClassicCalculatorTest {
     private ClassicCalculator classicCalculator;
 
     @Test
-    public void addTwoNumbers() {
+    public void addThreeNumbers() {
         final double expected = 7;
         final double actual;
         classicCalculator = new ClassicCalculator();
@@ -20,7 +20,7 @@ public class ClassicCalculatorTest {
     }
 
     @Test
-    public void subtractTwoNumbers() {
+    public void subtractThreeNumbers() {
         final double expected = 4;
         final double actual;
         classicCalculator = new ClassicCalculator();
@@ -53,7 +53,7 @@ public class ClassicCalculatorTest {
     }
 
     @Test
-    public void whenTwoArithmaticOperatinsDoneReurnsCorrectNumber() {
+    public void whenTwoArithmeticOperationsDoneReturnsCorrectNumber() {
         final double expected = 28;
         final double actual;
         classicCalculator = new ClassicCalculator();
