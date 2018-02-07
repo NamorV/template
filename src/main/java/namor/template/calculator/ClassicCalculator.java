@@ -1,10 +1,13 @@
 package namor.template.calculator;
 
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 public class ClassicCalculator {
 
     private LinkedList<String> operands;
+    private List<String> operands1;
 
     public ClassicCalculator() {
         this.operands = new LinkedList<>();
@@ -16,71 +19,32 @@ public class ClassicCalculator {
             operands.addLast(operationElement);
         }
 
-        while (operands.size() != 1) {
-            doArithmeticOperation();
+        operands1 = Collections.unmodifiableList(operands);
+        double result = Double.parseDouble(operands1.get(0));
+
+        for (int iterator = 1; iterator < operands1.size() - 1; iterator = iterator + 2) {
+            result = doArithmeticOperation(result, operands1.get(iterator), operands1.get(iterator + 1));
         }
 
-        return Double.parseDouble(operands.pop());
+        return result;
     }
 
-    private void doArithmeticOperation () {
-        int listPosition = 0;
-        double result;
-
-        while (!Sign.isSign(operands.get(listPosition))) {
-            listPosition++;
-        }
-
-        switch (Sign.getValue(operands.get(listPosition))) {
+    private double doArithmeticOperation (double result, String sign, String number) {
+         switch (Sign.getValue(sign)) {
             case ADDITION:
-                result = add(listPosition);
-                operands.addFirst(String.valueOf(result));
+                result = result + Double.parseDouble(number);
                 break;
             case SUBTRACTION:
-                result = subtract(listPosition);
-                operands.addFirst(String.valueOf(result));
+                result = result - Double.parseDouble(number);
                 break;
             case MULTIPLICATION:
-                result = multiply(listPosition);
-                operands.addFirst(String.valueOf(result));
+                result = result * Double.parseDouble(number);
                 break;
             case DIVISION:
-                result = divide(listPosition);
-                operands.addFirst(String.valueOf(result));
+                result = result / Double.parseDouble(number);
                 break;
         }
 
-    }
-
-    private final double add(int listPosition) {
-        final double firstNumber = Double.parseDouble(operands.remove(listPosition - 1));
-        final double secondNumber = Double.parseDouble(operands.remove(listPosition));
-        operands.removeFirst();
-
-        return firstNumber + secondNumber;
-    }
-
-    private final double subtract(int listPosition) {
-        final double firstNumber = Double.parseDouble(operands.remove(listPosition - 1));
-        final double secondNumber = Double.parseDouble(operands.remove(listPosition));
-        operands.removeFirst();
-
-        return firstNumber - secondNumber;
-    }
-
-    private final double multiply(int listPosition) {
-        final double firstNumber = Double.parseDouble(operands.remove(listPosition - 1));
-        final double secondNumber = Double.parseDouble(operands.remove(listPosition));
-        operands.removeFirst();
-
-        return firstNumber * secondNumber;
-    }
-
-    private final double divide(int listPosition) {
-        final double firstNumber = Double.parseDouble(operands.remove(listPosition - 1));
-        final double secondNumber = Double.parseDouble(operands.remove(listPosition));
-        operands.removeFirst();
-
-        return firstNumber / secondNumber;
+        return result;
     }
 }
