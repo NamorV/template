@@ -1,77 +1,70 @@
 package namor.template.calculator;
 
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
 
 public class ClassicCalculator {
 
     private LinkedList<String> operands;
-    private List<String> someName;
 
     public ClassicCalculator() {
         this.operands = new LinkedList<>();
     }
 
     public double calculate(String arithmeticExpression) {
-        int listPosition = 1;
-        double result;
 
-        for (String operationElement : arithmeticExpression.split(" ")) {
-            operands.addLast(operationElement);
+        String[] operationElements = arithmeticExpression.split(" ");
+        operands.addAll(Arrays.asList(operationElements));
+
+        while(operands.size() > 1) {
+            doArithmeticOperation(operands.poll(), operands.poll(), operands.poll());
         }
 
-        someName = Collections.unmodifiableList(operands);
-        result = Double.parseDouble(someName.get(0));
-
-        while (listPosition < (someName.size() - 1)) {
-            result = doArithmeticOperation(listPosition, result);
-            listPosition += 2;
-        }
-
-        return result;
+        return Double.parseDouble(operands.poll());
     }
 
-    private double doArithmeticOperation (int listPosition, double result) {
-        switch (Sign.getValue(someName.get(listPosition))) {
+    private void doArithmeticOperation (String firstNumber, String sign, String secondNumber) {
+        switch (Sign.getValue(sign)) {
             case ADDITION:
-                result = add(listPosition, result);
+                operands.addFirst(add(firstNumber, secondNumber));
                 break;
             case SUBTRACTION:
-                result = subtract(listPosition, result);
+                operands.addFirst(subtract(firstNumber, secondNumber));
                 break;
             case MULTIPLICATION:
-                result = multiply(listPosition, result);
+                operands.addFirst(multiply(firstNumber, secondNumber));
                 break;
             case DIVISION:
-                result = divide(listPosition, result);
+                operands.addFirst(divide(firstNumber, secondNumber));
                 break;
         }
-        return result;
-
     }
 
-    private final double add(int listPosition, double firstNumber) {
-        final double secondNumber = Double.parseDouble(someName.get(listPosition + 1));
+    private final String add(String firstString, String secondString) {
+        final double secondNumber = Double.parseDouble(secondString);
+        final double firstNumber = Double.parseDouble(firstString);
 
-        return firstNumber + secondNumber;
+        return String.valueOf(firstNumber + secondNumber);
     }
 
-    private final double subtract(int listPosition, double firstNumber) {
-        final double secondNumber = Double.parseDouble(someName.get(listPosition + 1));
+    private final String subtract(String firstString, String secondString) {
+        final double secondNumber = Double.parseDouble(secondString);
+        final double firstNumber = Double.parseDouble(firstString);
 
-        return firstNumber - secondNumber;
+        return String.valueOf(firstNumber - secondNumber);
     }
 
-    private final double multiply(int listPosition, double firstNumber) {
-        final double secondNumber = Double.parseDouble(someName.get(listPosition + 1));
+    private final String multiply(String firstString, String secondString) {
+        final double secondNumber = Double.parseDouble(secondString);
+        final double firstNumber = Double.parseDouble(firstString);
 
-        return firstNumber * secondNumber;
+        return String.valueOf(firstNumber * secondNumber);
     }
 
-    private final double divide(int listPosition, double firstNumber) {
-        final double secondNumber = Double.parseDouble(operands.get(listPosition + 1));
+    private final String divide(String firstString, String secondString) {
+        final double secondNumber = Double.parseDouble(secondString);
+        final double firstNumber = Double.parseDouble(firstString);
 
-        return firstNumber / secondNumber;
+        return String.valueOf(firstNumber / secondNumber);
     }
 }
