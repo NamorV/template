@@ -5,7 +5,6 @@ import java.util.LinkedList;
 
 public class ClassicCalculator {
 
-
     public double calculate(String arithmeticExpression) {
         LinkedList<String> operands = new LinkedList<>();
         String[] operationElements = arithmeticExpression.split(" ");
@@ -13,10 +12,7 @@ public class ClassicCalculator {
         operands.addAll(Arrays.asList(operationElements));
 
         while(operands.size() > 1) {
-            String first = operands.poll();
-            String sign = operands.poll();
-            String second = operands.poll();
-            doArithmeticOperation(operands, first, sign, second);
+            doArithmeticOperation(operands, operands.poll(), operands.poll(), operands.poll());
         }
 
         return Double.parseDouble(operands.poll());
@@ -37,7 +33,6 @@ public class ClassicCalculator {
                 operands.addFirst(divide(firstNumber, secondNumber));
                 break;
         }
-
     }
 
     private final String add(String firstString, String secondString) {
