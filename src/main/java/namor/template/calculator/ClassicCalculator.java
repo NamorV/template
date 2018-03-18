@@ -3,8 +3,9 @@ package namor.template.calculator;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-public class ClassicCalculator {
+public class ClassicCalculator implements Calculator {
 
+    @Override
     public double calculate(String arithmeticExpression) {
         LinkedList<String> operands = new LinkedList<>();
         String[] operationElements = arithmeticExpression.split(" ");

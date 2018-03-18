@@ -2,7 +2,7 @@ package namor.template.calculator;
 
 import namor.template.stack.Stack;
 
-public class RPNcalculator {
+public class RPNcalculator implements Calculator {
 
     private Stack<Double> operands;
 
@@ -10,6 +10,7 @@ public class RPNcalculator {
         this.operands = operands;
     }
 
+    @Override
     public double calculate(String arithmeticExpression) {
 
         for (String operationElement : arithmeticExpression.split(" ")) {
