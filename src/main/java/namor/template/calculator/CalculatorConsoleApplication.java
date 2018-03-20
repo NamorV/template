@@ -28,7 +28,6 @@ public class CalculatorConsoleApplication {
                 } else if (input.isEmpty()) {
                     System.out.println("0");
                 } else {
-                    //calculate(rpNcalculator, classicCalculator, input);
                     calculator = calculatorFactory.getCalculator(input);
                     result = calculator.calculate(input);
                     System.out.println(result);
