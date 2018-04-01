@@ -7,6 +7,10 @@ public class ClassicCalculator implements Calculator {
 
     @Override
     public double calculate(String arithmeticExpression) {
+        if(arithmeticExpression.isEmpty()) {
+            return 0;
+        }
+
         LinkedList<String> operands = new LinkedList<>();
         String[] operationElements = arithmeticExpression.split(" ");
 

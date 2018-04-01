@@ -62,4 +62,15 @@ public class ClassicCalculatorTest {
         actual = classicCalculator.calculate(arithmeticExpression);
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    public void whenInputEmptyReturnZero() {
+        final double expected = 0;
+        final double actual;
+        classicCalculator = new ClassicCalculator();
+        final String arithmeticExpression = "";
+
+        actual = classicCalculator.calculate(arithmeticExpression);
+        assertThat(actual).isEqualTo(expected);
+    }
 }

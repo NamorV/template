@@ -25,8 +25,6 @@ public class CalculatorConsoleApplication {
                 if ("q".equals(input)) {
                     System.out.println("End program!");
                     System.exit(0);
-                } else if (input.isEmpty()) {
-                    System.out.println("0");
                 } else {
                     calculator = calculatorFactory.get(input);
                     result = calculator.calculate(input);
