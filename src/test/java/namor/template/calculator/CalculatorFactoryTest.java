@@ -30,7 +30,7 @@ public class CalculatorFactoryTest {
 
     @Test
     public void whenInputEmptyReturnClassicCalculator() {
-        final String input = null;
+        final String input = "";
         final Calculator actual;
         calculatorFactory = new CalculatorFactory();
 
