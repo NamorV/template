@@ -28,7 +28,7 @@ public class CalculatorConsoleApplication {
                 } else if (input.isEmpty()) {
                     System.out.println("0");
                 } else {
-                    calculator = calculatorFactory.getCalculator(input);
+                    calculator = calculatorFactory.get(input);
                     result = calculator.calculate(input);
                     System.out.println(result);
                 }
@@ -40,3 +40,4 @@ public class CalculatorConsoleApplication {
     }
 
 }
+
