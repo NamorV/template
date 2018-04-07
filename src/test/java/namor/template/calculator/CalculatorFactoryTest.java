@@ -1,5 +1,6 @@
 package namor.template.calculator;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
@@ -8,11 +9,15 @@ public class CalculatorFactoryTest {
 
     private CalculatorFactory calculatorFactory;
 
+    @Before
+    public void setUp() {
+        calculatorFactory = new CalculatorFactory();
+    }
+
     @Test
     public void whenInputRpnExpressionReturnRPNCalculator() {
         final String input = "1 1 +";
         final Calculator actual;
-        calculatorFactory = new CalculatorFactory();
 
         actual = calculatorFactory.get(input);
         assertThat(actual.getClass()).isEqualTo(RPNcalculator.class);
@@ -22,7 +27,6 @@ public class CalculatorFactoryTest {
     public void whenInputClassicExpressionReturnClassicCalculator() {
         final String input = "1 + 1";
         final Calculator actual;
-        calculatorFactory = new CalculatorFactory();
 
         actual = calculatorFactory.get(input);
         assertThat(actual.getClass()).isEqualTo(ClassicCalculator.class);
@@ -32,7 +36,6 @@ public class CalculatorFactoryTest {
     public void whenInputEmptyReturnClassicCalculator() {
         final String input = "";
         final Calculator actual;
-        calculatorFactory = new CalculatorFactory();
 
         actual = calculatorFactory.get(input);
         assertThat(actual.getClass()).isEqualTo(ClassicCalculator.class);
