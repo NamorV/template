@@ -7,6 +7,12 @@ public class Node<K, V> {
     private V value;
     private Node<K, V> next;
 
+    public Node(K key, V value, int hash) {
+        this.key = key;
+        this.value = value;
+        this.hash = hash;
+    }
+
     public int getHash() {
         return hash;
     }
@@ -37,5 +43,15 @@ public class Node<K, V> {
 
     public void setNext(Node<K, V> next) {
         this.next = next;
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "hash=" + hash +
+                ", key=" + key +
+                ", value=" + value +
+                ", next=" + next +
+                '}';
     }
 }
