@@ -23,8 +23,6 @@ public class MyHashMap<K, V> {
         int index = hash & (STANDARD_TABLE_SIZE - 1);
         Node<K, V> node = new Node<>(key, value, hash);
 
-        System.out.println(node.toString());
-
         if(table[index] == null) {
             table[index] = node;
         } else {
@@ -38,5 +36,19 @@ public class MyHashMap<K, V> {
         }
 
         size++;
+    }
+
+    public V get(K key) {
+        int hash = key.hashCode();
+        int index = hash & (STANDARD_TABLE_SIZE - 1);
+        Node<K, V> node = table[index];
+
+        while (node != null) {
+            if(node.getHash() == hash) {
+                return node.getValue();
+            }
+        }
+
+        return null;
     }
 }

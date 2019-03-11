@@ -40,4 +40,15 @@ public class MyHashMapTest {
 
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    public void pushedValueIsInTheStack()
+    {
+        final int expected = 3;
+        final int actual;
+
+        hashMap.put("KING", 3);
+        actual = hashMap.get("KING");
+        assertThat(actual).isEqualTo(expected);
+    }
 }
