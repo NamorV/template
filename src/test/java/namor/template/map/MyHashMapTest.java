@@ -42,13 +42,26 @@ public class MyHashMapTest {
     }
 
     @Test
-    public void pushedValueIsInTheMap()
-    {
+    public void pushedValueIsInTheMap() {
         final int expected = 3;
         final int actual;
 
         hashMap.put("KING", 3);
         actual = hashMap.get("KING");
         assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    public void whenKeyIsInMapExpectContainsKeyTrue() {
+        hashMap.put("ROMAN", 1);
+
+        assertThat(hashMap.containsKey("ROMAN")).isTrue();
+    }
+
+    @Test
+    public void whenKeyIsNotInMapExpectContainsKeyFalse() {
+        hashMap.put("ROMAN", 1);
+
+        assertThat(hashMap.containsKey("KING")).isFalse();
     }
 }

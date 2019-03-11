@@ -51,4 +51,12 @@ public class MyHashMap<K, V> {
 
         return null;
     }
+
+    public boolean containsKey(K key) {
+        if(get(key) == null) {
+            return false;
+        }
+
+        return true;
+    }
 }
