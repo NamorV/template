@@ -42,7 +42,7 @@ public class MyHashMapTest {
     }
 
     @Test
-    public void pushedValueIsInTheStack()
+    public void pushedValueIsInTheMap()
     {
         final int expected = 3;
         final int actual;
